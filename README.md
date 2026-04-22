@@ -1,12 +1,24 @@
-# Next.js Boilerplate (Structure First)
+# Next.js Boilerplate
 
-This repository is intentionally scaffolded with governance, automation, and quality guardrails before app generation.
+Production-ready Next.js starter with TypeScript, testing, and developer workflow guardrails.
 
-## Current Status
-- Repository structure created
-- Agent rules, hooks, and skills scaffolded
-- GitHub Actions CI-only workflows scaffolded
-- Next.js app generation intentionally deferred
+## Run the Application
+- Install dependencies: `npm install`
+- Start development server: `npm run dev`
+- Build production assets: `npm run build`
+- Start production server: `npm run start`
 
-## Next Step
-After structure approval, generate the actual Next.js app and wire scripts/configs.
+## Quality Checks
+- Lint: `npm run lint`
+- Type check: `npm run typecheck`
+- Unit tests: `npm run test`
+- Integration tests: `npm run test:integration`
+- E2E tests: `npm run test:e2e`
+
+## Project Docs
+- Architecture: `docs/architecture.md`
+- Development workflow: `docs/development-workflow.md`
+
+## AI Tooling Notes
+- `.cursor/` contains Cursor-specific rules and skills. Removing it does not affect app runtime.
+- Shared docs like `AGENTS.md` and this `README.md` remain the best cross-tool references for Claude/Copilot/Cursor.
