@@ -1,0 +1,8 @@
+---
+description: Testing policy and minimum expectations
+---
+
+- Unit test utility logic in `src/lib`.
+- Integration test route behavior where relevant.
+- Add e2e tests for user-critical flows.
+- Do not merge failing tests.

@@ -1,0 +1,14 @@
+{
+  "name": "nextjs-boilerplate",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Structure-first Next.js boilerplate",
+  "scripts": {
+    "dev": "echo \"Generate Next.js app first\"",
+    "build": "echo \"Generate Next.js app first\"",
+    "start": "echo \"Generate Next.js app first\"",
+    "lint": "echo \"Configure ESLint after app generation\"",
+    "typecheck": "echo \"Configure TypeScript checks after app generation\"",
+    "test": "echo \"Configure tests after app generation\""
+  }
+}

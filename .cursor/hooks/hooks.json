@@ -1,0 +1,14 @@
+{
+  "hooks": [
+    {
+      "name": "pre-commit-check",
+      "command": ".cursor/hooks/scripts/pre-commit-check.sh",
+      "events": ["pre-commit"]
+    },
+    {
+      "name": "pre-push-check",
+      "command": ".cursor/hooks/scripts/pre-push-check.sh",
+      "events": ["pre-push"]
+    }
+  ]
+}
