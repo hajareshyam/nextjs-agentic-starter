@@ -4,11 +4,36 @@
   "version": "0.1.0",
   "description": "Structure-first Next.js boilerplate",
   "scripts": {
-    "dev": "echo \"Generate Next.js app first\"",
-    "build": "echo \"Generate Next.js app first\"",
-    "start": "echo \"Generate Next.js app first\"",
-    "lint": "echo \"Configure ESLint after app generation\"",
-    "typecheck": "echo \"Configure TypeScript checks after app generation\"",
-    "test": "echo \"Configure tests after app generation\""
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:integration": "vitest run tests/integration",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@tailwindcss/postcss": "^4.2.4",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "jsdom": "^27.0.1",
+    "postcss": "^8.5.10",
+    "tailwindcss": "^4.2.4",
+    "typescript": "latest",
+    "vite-tsconfig-paths": "^6.1.1",
+    "vitest": "^3.2.4"
   }
 }
