@@ -3,6 +3,31 @@
 ## Target
 Single Next.js application repository using npm, with clear boundaries in `src/`.
 
+## Diagram
+```text
+Next.js App Repository
+|
++-- src/app (App Router pages and layouts)
+|
++-- src/components (Reusable UI grouped by domain)
+|   |
+|   +-- layout
+|   +-- forms
+|   +-- marketing
+|   +-- other domains
+|
++-- src/lib (Shared utilities and service helpers)
++-- src/hooks (React hooks)
++-- src/types (Shared TypeScript types)
+|
++-- tests/unit (Mirrors src structure for discoverability)
+|
++-- Quality Baseline
+    +-- Linting + formatting + type checking
+    +-- Unit/integration tests + e2e placeholders
+    +-- CI gates for pull requests
+```
+
 ## Layers
 - `src/app`: Next.js App Router pages and layouts
 - `src/components`: reusable UI components grouped by domain (example: `src/components/layout`)

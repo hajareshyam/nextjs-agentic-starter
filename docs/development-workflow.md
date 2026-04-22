@@ -1,5 +1,10 @@
 # Development Workflow
 
+## Running the Application
+- Start local development server with `npm run app:dev`
+- Build production assets with `npm run app:build`
+- Start production server (after build) with `npm run app:start`
+
 ## Branching
 - Create feature branches from `main`
 - Keep pull requests focused and small
