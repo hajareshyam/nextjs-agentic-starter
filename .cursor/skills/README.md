@@ -6,23 +6,39 @@ These project-local skills standardize repeatable delivery patterns.
 - `api-route`: create robust API routes with validation and tests
 - `test-coverage`: expand tests and prevent regressions
 - `perf-check`: investigate and improve runtime bottlenecks (production-mode first)
+- `story-writing`: create concise, implementation-ready stories before planning
 - `feature-planning`: define scope, acceptance criteria, risks, and test strategy before coding
 - `implementation-execution`: implement approved plans with focused, standards-aligned changes
 - `qa-validation`: verify behavior, run quality gates, and report merge readiness
 
 ## Default Agent Order
 
-1. `feature-planning`
-2. `implementation-execution`
-3. `qa-validation`
+1. `story-writing` (for medium/large/risky work)
+2. `feature-planning`
+3. `implementation-execution`
+4. `qa-validation`
 
 ## Rule of Thumb
 
 - Small bug fix (single-file or low-risk): `implementation-execution` -> `qa-validation`
-- Medium/large feature: `feature-planning` -> `implementation-execution` -> `qa-validation`
-- Risky refactor or API contract change: always run all three in order
+- Medium/large feature: `story-writing` -> `feature-planning` -> `implementation-execution` -> `qa-validation`
+- Risky refactor or API contract change: always run all four in order
 
 ## Copy-Paste Prompts
+
+`story-writing`
+```text
+Use the story-writing skill.
+Task: <describe the feature/request>
+Keep output concise and implementation-ready.
+Include:
+- title and roles
+- objective and user story
+- in-scope and out-of-scope
+- testable acceptance criteria (Given/When/Then)
+- dependencies, risks, and assumptions
+- short handoff note for feature-planning
+```
 
 `feature-planning`
 ```text
@@ -89,6 +105,20 @@ Use dev mode only as a quick smoke signal.
 ```
 
 ## Example Prompts By Skill
+
+`story-writing` example
+```text
+Use the story-writing skill.
+Task: Add profile photo upload for signed-in users.
+Keep output concise and implementation-ready.
+Include:
+- title and roles
+- objective and user story
+- in-scope and out-of-scope
+- testable acceptance criteria (Given/When/Then)
+- dependencies, risks, and assumptions
+- short handoff note for feature-planning
+```
 
 `feature-planning` example
 ```text
@@ -178,33 +208,36 @@ flowchart TD
     A[Start Task] --> B{Task size/risk?}
 
     B -->|Small bug, low risk| C[implementation-execution]
-    B -->|Medium/Large feature| D[feature-planning]
+    B -->|Medium/Large feature| D[story-writing]
     B -->|Risky refactor / API contract change| D
 
-    D --> E[Planning Handoff]
-    E --> C
+    D --> E[Story Handoff]
+    E --> F[feature-planning]
+    F --> G[Planning Handoff]
+    G --> C
 
-    C --> F{API integration involved?}
-    F -->|Yes| G[api-route<br/>contract + validation + docs verification]
-    F -->|No| H[Continue implementation]
+    C --> H{API integration involved?}
+    H -->|Yes| I[api-route<br/>contract + validation + docs verification]
+    H -->|No| J[Continue implementation]
 
-    G --> H
-    H --> I[Implementation Handoff]
+    I --> J
+    J --> K[Implementation Handoff]
 
-    I --> J[qa-validation]
-    J --> K{Checks pass?}
+    K --> L[qa-validation]
+    L --> M{Checks pass?}
 
-    K -->|No| L[Blockers / fixes required]
-    L --> C
+    M -->|No| N[Blockers / fixes required]
+    N --> C
 
-    K -->|Yes| M[QA Handoff]
-    M --> N[Reviewer / PR merge decision]
+    M -->|Yes| O[QA Handoff]
+    O --> P[Reviewer / PR merge decision]
 ```
 
 ## Handoff Protocol
 
 Use a handoff at each transition:
 
+- `story-writing` -> `feature-planning`
 - `feature-planning` -> `implementation-execution`
 - `implementation-execution` -> `qa-validation`
 - `qa-validation` -> reviewer/PR merge decision
