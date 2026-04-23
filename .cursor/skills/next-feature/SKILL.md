@@ -9,4 +9,5 @@ Adding or modifying user-facing Next.js functionality.
 3. Keep changes focused; avoid unrelated refactors.
 4. Enforce security basics: never hardcode secrets and validate external input at boundaries.
 5. Add or update tests for changed behavior (unit/integration/e2e as needed).
-6. Run lint, typecheck, and relevant tests before handoff.
+6. Run typecheck and relevant tests; run lint when lint setup is functional in the environment.
+7. Include coverage for changed files when available, or mark `n/a` with reason in handoff.
