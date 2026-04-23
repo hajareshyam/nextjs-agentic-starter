@@ -9,3 +9,18 @@ alwaysApply: true
 - Do not merge failing tests.
 - Report coverage for changed files when available, or mark `n/a` with reason.
 - Performance validation should be production-mode first (`npm run build` + `npm run start`); use dev mode only for smoke checks.
+
+## Example
+
+```text
+Good:
+- src/lib/profile.ts changed -> add tests/unit/lib/profile.test.ts
+- src/app/api/profile/route.ts changed -> add tests/integration/profile-route.test.ts
+- critical user flow changed -> add/update tests/e2e/profile-edit.spec.ts
+- report coverage command and changed-file coverage in handoff
+
+Bad:
+- only manual testing for API changes
+- skipping failing tests "for now"
+- perf decision based only on next dev measurements
+```

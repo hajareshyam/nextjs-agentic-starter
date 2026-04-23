@@ -9,3 +9,18 @@ alwaysApply: true
 - Add or update tests for changed behavior.
 - Keep changes small and focused; avoid unrelated refactors in the same PR.
 - If behavior, API contract, or setup changes, update docs in the same change.
+
+## Example
+
+```ts
+// Good: focused module with explicit server boundary and testable logic.
+export async function getProfileById(userId: string) {
+  if (!userId) throw new Error("userId required");
+  return db.profile.findUnique({ where: { userId } });
+}
+
+// Bad: mixes unrelated behavior and weak naming.
+export async function doStuff(a: string) {
+  // fetch profile + send email + mutate settings in one function
+}
+```

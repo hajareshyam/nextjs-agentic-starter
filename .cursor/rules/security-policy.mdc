@@ -9,3 +9,20 @@ alwaysApply: true
 - Apply least privilege for runtime and CI tokens.
 - Require auth/authorization checks for mutating API routes unless explicitly public by design.
 - Validate input before business logic and return consistent, non-sensitive error responses.
+
+## Example
+
+```ts
+// Good: validates input and avoids leaking internals.
+if (!session?.user?.id) {
+  return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+}
+const parsed = schema.safeParse(body);
+if (!parsed.success) {
+  return NextResponse.json({ error: "Invalid request payload" }, { status: 400 });
+}
+
+// Bad: hardcoded secret and raw error leakage.
+const apiKey = "sk_live_123"; // never hardcode secrets
+return NextResponse.json({ error: String(err) }, { status: 500 });
+```
