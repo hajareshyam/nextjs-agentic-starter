@@ -20,6 +20,12 @@ Defining a feature/request before `feature-planning` so requirements are clear a
 3. Avoid repeated background and avoid long narrative text.
 4. Use bullet points and short Given/When/Then criteria.
 
+## Context fork guidance
+1. Use `context fork: true` for medium/large/risky requests, long/noisy threads, or multi-story discussions.
+2. Skip context fork for small, single-change requests.
+3. Use one fork per story to avoid mixing requirements across features.
+4. In forked context, include only goal, constraints, dependencies, and confirmed decisions.
+
 ## Output format
 1. Title
 2. Role(s)
