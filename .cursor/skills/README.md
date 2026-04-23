@@ -43,11 +43,27 @@ Do not implement yet.
 Use the implementation-execution skill.
 Implement the approved plan for: <task>.
 Follow project standards and keep changes focused.
-Run lint, typecheck, and relevant tests before handoff.
+Run typecheck and relevant tests before handoff; run lint when lint setup is functional.
 Report:
 - files changed
 - key implementation decisions
 - any follow-up items
+```
+
+`api-route`
+```text
+Use the api-route skill.
+Task: <describe the API route to add/update>
+If integrating an external provider, verify latest docs before implementation:
+- endpoint URL, method, headers, auth
+- request/response schema
+- rate limits and error codes
+Implement route in src/app/api with validation and focused module boundaries.
+Run typecheck and relevant tests before handoff; run lint when lint setup is functional.
+Report:
+- API contract and status codes
+- test coverage added (integration + any src/lib unit tests)
+- doc URL(s) used for external API verification
 ```
 
 `qa-validation`
@@ -55,7 +71,7 @@ Report:
 Use the qa-validation skill.
 Validate the completed implementation for: <task>.
 Check acceptance criteria, edge cases, and regressions.
-Run lint, typecheck, and relevant tests.
+Run typecheck and relevant tests; run lint when lint setup is functional.
 Report:
 - blocking issues (if any)
 - non-blocking improvements
@@ -70,6 +86,36 @@ Run baseline in production mode (npm run build && npm run start).
 Capture cold and warm metrics, identify root cause, and apply only focused optimization.
 Re-measure in the same production setup and report before/after.
 Use dev mode only as a quick smoke signal.
+```
+
+## Workflow Diagram
+
+```mermaid
+flowchart TD
+    A[Start Task] --> B{Task size/risk?}
+
+    B -->|Small bug, low risk| C[implementation-execution]
+    B -->|Medium/Large feature| D[feature-planning]
+    B -->|Risky refactor / API contract change| D
+
+    D --> E[Planning Handoff]
+    E --> C
+
+    C --> F{API integration involved?}
+    F -->|Yes| G[api-route<br/>contract + validation + docs verification]
+    F -->|No| H[Continue implementation]
+
+    G --> H
+    H --> I[Implementation Handoff]
+
+    I --> J[qa-validation]
+    J --> K{Checks pass?}
+
+    K -->|No| L[Blockers / fixes required]
+    L --> C
+
+    K -->|Yes| M[QA Handoff]
+    M --> N[Reviewer / PR merge decision]
 ```
 
 ## Handoff Protocol

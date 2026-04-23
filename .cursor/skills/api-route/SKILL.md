@@ -12,3 +12,4 @@ Creating or updating API endpoints in App Router.
 6. Document edge cases and status code behavior.
 7. Before handoff, ensure typecheck and relevant tests pass; run lint when lint setup is functional in the environment.
 8. Report coverage for changed files when available, or mark `n/a` with reason in handoff.
+9. For external API integrations, verify latest provider docs (endpoint URL, method, headers, auth, payload, response schema, rate limits, and error codes) before implementation and cite doc URL(s) in handoff.
