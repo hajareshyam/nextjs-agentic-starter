@@ -1,0 +1,14 @@
+---
+description: CSS and Tailwind standards for UI consistency
+globs: src/**/*.{tsx,css}
+alwaysApply: false
+---
+
+- Prefer Tailwind utility classes for component styling; use custom CSS only when utilities are insufficient.
+- Keep `src/app/globals.css` minimal (base styles, tokens, and shared primitives only).
+- Use mobile-first responsive classes and add breakpoints only when needed.
+- Require visible focus states for interactive elements (`focus`/`focus-visible`) and clear disabled/hover states.
+- Avoid one-off arbitrary values unless justified by design requirements.
+- If the same utility group repeats across multiple components, extract a shared component or helper.
+- Keep class lists readable: group related utilities (layout, spacing, typography, state).
+- Avoid inline styles unless values must be computed dynamically at runtime.
