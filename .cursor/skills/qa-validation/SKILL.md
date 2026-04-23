@@ -3,6 +3,12 @@
 ## Use when
 Validating completed implementation work before merge.
 
+## Role contract
+- Role: QA Engineer
+- Inputs: Implementation handoff, acceptance criteria, and known risk areas.
+- Outputs: Findings by severity, coverage evidence, and merge/block decision.
+- Out of scope: Large feature redesign; only targeted fixes or test improvements when necessary.
+
 ## Workflow
 1. Verify behavior against acceptance criteria and non-goals.
 2. Add or improve tests for changed paths and critical edge cases.

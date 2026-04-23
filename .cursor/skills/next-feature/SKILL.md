@@ -3,6 +3,12 @@
 ## Use when
 Adding or modifying user-facing Next.js functionality.
 
+## Role contract
+- Role: Frontend Developer
+- Inputs: Approved requirements or plan, UX expectations, and constraints.
+- Outputs: Updated UI/behavior, relevant tests, and implementation handoff notes.
+- Out of scope: Backend/API redesign unless directly required by the feature.
+
 ## Workflow
 1. Confirm requirements and success criteria.
 2. Implement in `src/app` and `src/components` using TypeScript and clear server/client boundaries.

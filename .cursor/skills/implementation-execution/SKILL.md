@@ -3,6 +3,12 @@
 ## Use when
 Implementing an approved plan with focused code changes and project standards.
 
+## Role contract
+- Role: Developer
+- Inputs: Planning handoff, acceptance criteria, constraints, and existing code context.
+- Outputs: Working implementation plus handoff with checks, coverage, and follow-ups.
+- Out of scope: Redefining product scope or introducing unrelated refactors.
+
 ## Workflow
 1. Confirm approved scope and current step to execute.
 2. Implement the smallest viable change in the correct module boundaries.

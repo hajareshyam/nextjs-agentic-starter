@@ -3,6 +3,12 @@
 ## Use when
 Creating or updating API endpoints in App Router.
 
+## Role contract
+- Role: API Developer
+- Inputs: API requirements, request/response contract, auth rules, and integration dependencies.
+- Outputs: Route implementation, documented behavior/status codes, and test coverage evidence.
+- Out of scope: Frontend UI implementation unless needed only for endpoint verification.
+
 ## Workflow
 1. Define request/response contract and validation.
 2. Implement route logic in `src/app/api` using TypeScript and focused module boundaries.

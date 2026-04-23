@@ -3,6 +3,12 @@
 ## Use when
 Scoping a feature before coding, including acceptance criteria, risks, and rollout approach.
 
+## Role contract
+- Role: Feature Planner
+- Inputs: Story handoff, constraints, existing architecture, and quality/security expectations.
+- Outputs: Scope, file-by-file plan, risks, rollback notes, and test strategy.
+- Out of scope: Writing production code before explicit approval.
+
 ## Workflow
 1. Restate objective, constraints, and non-goals.
 2. Define acceptance criteria and measurable success signals.

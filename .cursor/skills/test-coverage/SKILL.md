@@ -3,6 +3,12 @@
 ## Use when
 Increasing confidence in changed modules.
 
+## Role contract
+- Role: Test Engineer
+- Inputs: Changed modules, risk areas, and expected behavior/contracts.
+- Outputs: Updated unit/integration/e2e tests plus coverage reporting.
+- Out of scope: Broad feature changes not required for testability.
+
 ## Workflow
 1. Identify behavior changes and risk areas.
 2. Add unit tests for utility logic in `src/lib` and other changed logic paths.

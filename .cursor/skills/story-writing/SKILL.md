@@ -8,6 +8,12 @@ description: Write concise product stories with clear scope, acceptance criteria
 ## Use when
 Defining a feature/request before `feature-planning` so requirements are clear and implementation-ready.
 
+## Role contract
+- Role: Product Story Writer
+- Inputs: Feature/request summary, constraints, dependencies, and assumptions.
+- Outputs: Structured story plus short handoff notes for `feature-planning`.
+- Out of scope: Detailed technical design, implementation choices, and code changes.
+
 ## Context control
 1. Keep output concise (prefer <= 250 words unless user asks for more).
 2. Include only information needed for planning/implementation.

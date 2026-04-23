@@ -3,6 +3,12 @@
 ## Use when
 Profiling slow pages, API handlers, or rendering bottlenecks.
 
+## Role contract
+- Role: Performance Engineer
+- Inputs: Target page/route/interaction, reproduction steps, and performance goals.
+- Outputs: Baseline metrics, root cause analysis, focused optimization, and before/after results.
+- Out of scope: Optimization changes without measurement evidence.
+
 ## Workflow
 1. Reproduce and measure in production mode first (`npm run build` + `npm run start`) with cold and warm runs.
 2. Use dev mode only for quick smoke checks, not for final performance decisions.

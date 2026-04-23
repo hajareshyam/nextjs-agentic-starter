@@ -11,6 +11,17 @@ These project-local skills standardize repeatable delivery patterns.
 - `implementation-execution`: implement approved plans with focused, standards-aligned changes
 - `qa-validation`: verify behavior, run quality gates, and report merge readiness
 
+## Skill Role Mapping
+
+- `story-writing` -> Product Story Writer
+- `feature-planning` -> Feature Planner
+- `implementation-execution` -> Developer
+- `next-feature` -> Frontend Developer
+- `api-route` -> API Developer
+- `test-coverage` -> Test Engineer
+- `qa-validation` -> QA Engineer
+- `perf-check` -> Performance Engineer
+
 ## Default Agent Order
 
 1. `story-writing` (for medium/large/risky work)
