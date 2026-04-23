@@ -4,10 +4,11 @@
 Profiling slow pages, API handlers, or rendering bottlenecks.
 
 ## Workflow
-1. Reproduce and measure the performance issue.
-2. Identify root cause (compute, I/O, rendering, bundle size).
-3. Apply the smallest focused optimization; avoid unrelated refactors.
-4. Preserve behavior and security constraints (validation at boundaries, no secret exposure).
-5. Add or update tests when behavior or contracts change.
-6. Re-measure and document before/after impact.
-7. Run lint, typecheck, and relevant tests before handoff.
+1. Reproduce and measure in production mode first (`npm run build` + `npm run start`) with cold and warm runs.
+2. Use dev mode only for quick smoke checks, not for final performance decisions.
+3. Identify root cause (compute, I/O, rendering, bundle size, network).
+4. Apply the smallest focused optimization; avoid unrelated refactors.
+5. Preserve behavior and security constraints (validation at boundaries, no secret exposure).
+6. Add or update tests when behavior or contracts change.
+7. Re-measure in the same production-mode setup and document before/after impact.
+8. Run lint, typecheck, and relevant tests before handoff.

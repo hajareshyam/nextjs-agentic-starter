@@ -1,8 +1,11 @@
 ---
 description: Testing policy and minimum expectations
+alwaysApply: true
 ---
 
 - Unit test utility logic in `src/lib`.
 - Integration test route behavior where relevant.
 - Add e2e tests for user-critical flows.
 - Do not merge failing tests.
+- Report coverage for changed files when available, or mark `n/a` with reason.
+- Performance validation should be production-mode first (`npm run build` + `npm run start`); use dev mode only for smoke checks.

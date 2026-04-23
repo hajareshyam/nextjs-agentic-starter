@@ -5,7 +5,7 @@ These project-local skills standardize repeatable delivery patterns.
 - `next-feature`: implement product features in app router architecture
 - `api-route`: create robust API routes with validation and tests
 - `test-coverage`: expand tests and prevent regressions
-- `perf-check`: investigate and improve runtime bottlenecks
+- `perf-check`: investigate and improve runtime bottlenecks (production-mode first)
 - `feature-planning`: define scope, acceptance criteria, risks, and test strategy before coding
 - `implementation-execution`: implement approved plans with focused, standards-aligned changes
 - `qa-validation`: verify behavior, run quality gates, and report merge readiness
@@ -62,6 +62,16 @@ Report:
 - merge readiness verdict
 ```
 
+`perf-check`
+```text
+Use the perf-check skill.
+Target: <page/route/interaction>
+Run baseline in production mode (npm run build && npm run start).
+Capture cold and warm metrics, identify root cause, and apply only focused optimization.
+Re-measure in the same production setup and report before/after.
+Use dev mode only as a quick smoke signal.
+```
+
 ## Handoff Protocol
 
 Use a handoff at each transition:
@@ -89,6 +99,9 @@ Checks:
 - lint: <pass/fail>
 - typecheck: <pass/fail>
 - tests: <pass/fail + scope>
+- coverage command: <command used or n/a>
+- changed files coverage: <percent or n/a>
+- critical paths covered: <yes/no + note>
 
 Risks / Follow-ups:
 - <item>

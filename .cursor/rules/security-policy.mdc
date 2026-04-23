@@ -1,8 +1,11 @@
 ---
 description: Security baseline policy
+alwaysApply: true
 ---
 
 - Never hardcode secrets.
 - Validate external input at API boundaries.
 - Keep dependencies updated and audit regularly.
 - Apply least privilege for runtime and CI tokens.
+- Require auth/authorization checks for mutating API routes unless explicitly public by design.
+- Validate input before business logic and return consistent, non-sensitive error responses.

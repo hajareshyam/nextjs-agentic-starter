@@ -1,8 +1,11 @@
 ---
 description: Project coding standards for Next.js app
+alwaysApply: true
 ---
 
 - Use TypeScript for all application code.
 - Keep modules cohesive and avoid deeply nested logic in components.
 - Prefer explicit naming for server/client boundaries.
 - Add or update tests for changed behavior.
+- Keep changes small and focused; avoid unrelated refactors in the same PR.
+- If behavior, API contract, or setup changes, update docs in the same change.
