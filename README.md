@@ -20,5 +20,6 @@ Production-ready Next.js starter with TypeScript, testing, and developer workflo
 - Development workflow: `docs/development-workflow.md`
 
 ## AI Tooling Notes
-- `.cursor/` contains Cursor-specific rules and skills. Removing it does not affect app runtime.
-- Shared docs like `AGENTS.md` and this `README.md` remain the best cross-tool references for Claude/Copilot/Cursor.
+- `.cursor/` contains Cursor-native rules and skills. Keep it if you use Cursor workflows.
+- Claude/Copilot can read these files as regular docs when referenced, but they do not natively execute Cursor rules/skills the same way Cursor does.
+- Shared docs like `AGENTS.md` and this `README.md` are the primary cross-tool references for Claude/Copilot/Cursor.
