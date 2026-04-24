@@ -24,16 +24,21 @@ These project-local skills standardize repeatable delivery patterns.
 
 ## Default Agent Order
 
-1. `story-writing` (for medium/large/risky work)
-2. `feature-planning`
-3. `implementation-execution`
-4. `qa-validation`
+Assumption: BA/Product provides stories before engineering starts.
+
+1. `feature-planning`
+2. `implementation-execution`
+3. `qa-validation`
+
+Optional pre-step:
+- `story-writing` (only when stories/acceptance criteria are missing or unclear)
 
 ## Rule of Thumb
 
 - Small bug fix (single-file or low-risk): `implementation-execution` -> `qa-validation`
-- Medium/large feature: `story-writing` -> `feature-planning` -> `implementation-execution` -> `qa-validation`
-- Risky refactor or API contract change: always run all four in order
+- BA-ready medium/large feature: `feature-planning` -> `implementation-execution` -> `qa-validation`
+- Missing/unclear story: `story-writing` -> `feature-planning` -> `implementation-execution` -> `qa-validation`
+- Risky refactor or API contract change: include `feature-planning` and `qa-validation`; add `story-writing` only when needed
 
 ## Copy-Paste Prompts
 
@@ -219,11 +224,12 @@ flowchart TD
     A[Start Task] --> B{Task size/risk?}
 
     B -->|Small bug, low risk| C[implementation-execution]
-    B -->|Medium/Large feature| D[story-writing]
-    B -->|Risky refactor / API contract change| D
+    B -->|BA-ready medium/large feature| F[feature-planning]
+    B -->|Story unclear or missing| D[story-writing]
+    B -->|Risky refactor / API contract change| F
 
     D --> E[Story Handoff]
-    E --> F[feature-planning]
+    E --> F
     F --> G[Planning Handoff]
     G --> C
 

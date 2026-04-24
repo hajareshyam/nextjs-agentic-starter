@@ -7,7 +7,7 @@ Production-ready Next.js starter with TypeScript, strong testing defaults, and a
 - Built-in quality gates: lint, typecheck, unit, integration, and e2e tests.
 - Documentation set for architecture, dev workflow, troubleshooting, and releases.
 - Agent operating contract in `AGENTS.md` for safe, predictable coding changes.
-- Project-local Cursor skills in `.cursor/skills` for story -> plan -> implement -> QA flow.
+- Project-local Cursor skills in `.cursor/skills` for plan -> implement -> QA flow (with optional story refinement).
 
 ## Run the Application
 - Install dependencies: `npm install`
@@ -23,10 +23,11 @@ Production-ready Next.js starter with TypeScript, strong testing defaults, and a
 - E2E tests: `npm run test:e2e`
 
 ## Agentic Workflow (Recommended)
-1. `story-writing` -> define concise, testable product story.
-2. `feature-planning` -> produce scope, acceptance criteria, risks, and file plan.
-3. `implementation-execution` -> implement approved plan with focused diffs.
-4. `qa-validation` -> verify acceptance criteria, regressions, and merge readiness.
+Assumption: Business Analyst/Product owns story creation before engineering starts.
+
+1. `feature-planning` -> produce scope, acceptance criteria, risks, and file plan.
+2. `implementation-execution` -> implement approved plan with focused diffs.
+3. `qa-validation` -> verify acceptance criteria, regressions, and merge readiness.
 
 For small low-risk fixes, use:
 - `implementation-execution` -> `qa-validation`
@@ -34,7 +35,7 @@ For small low-risk fixes, use:
 ## Available Agents and Skills
 
 ### Core Delivery Agents
-- `story-writing` (Product Story Writer): shapes implementation-ready stories.
+- `story-writing` (Product Story Writer): optional pre-planning support when stories are missing or unclear.
 - `feature-planning` (Feature Planner): scopes work and defines test strategy.
 - `implementation-execution` (Developer): implements approved plan safely.
 - `qa-validation` (QA Engineer): validates behavior, risks, and release readiness.
@@ -46,7 +47,8 @@ For small low-risk fixes, use:
 - `perf-check` (Performance Engineer): production-mode performance baselines and measured optimization.
 
 ## Skill-to-Task Quick Guide
-- New feature request: `story-writing` -> `feature-planning` -> `implementation-execution` -> `qa-validation`
+- BA-ready feature/story: `feature-planning` -> `implementation-execution` -> `qa-validation`
+- New request without clear story: `story-writing` -> `feature-planning` -> `implementation-execution` -> `qa-validation`
 - API contract or route change: add `api-route` during implementation.
 - Risky regression-prone change: add `test-coverage` before QA handoff.
 - Slow route/page investigation: run `perf-check` with production-mode measurements.

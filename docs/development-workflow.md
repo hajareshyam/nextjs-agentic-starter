@@ -89,3 +89,19 @@ If critical production issue:
 - Use the PR template
 - Default target branch for feature work is `dev`
 - Ensure CI passes before merge
+
+## Agentic Delivery Flow
+Assumption: BA/Product creates and refines stories before engineering execution.
+
+Default engineering flow:
+1. `feature-planning`
+2. `implementation-execution`
+3. `qa-validation`
+
+Optional pre-step:
+- Use `story-writing` only when request details or acceptance criteria are incomplete.
+
+Specialized support skills:
+- `api-route` for API contract and endpoint work.
+- `test-coverage` for targeted confidence and regression prevention.
+- `perf-check` for production-mode performance investigation and optimization.
