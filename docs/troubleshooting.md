@@ -28,6 +28,18 @@
     3. inspect `test-results/` artifacts and error context
     4. re-run after fix
 
+- **Coverage report missing or unexpected percentages**
+  - Symptom: `npm run test:coverage` fails or shows 0% for app code.
+  - Fix:
+    1. confirm `@vitest/coverage-v8` is installed
+    2. run `npm run test:coverage` and check the **`All files`** row
+    3. open `coverage/index.html` for per-file detail
+    4. for `src/lib` changes, run `npm run test:coverage:changed`
+
+- **Pipeline phase blocked at approval gate**
+  - Symptom: agent stops after planning or implementation without continuing.
+  - Fix: reply with explicit approval (`Proceed to implementation-execution` or `Proceed to qa-validation`). `delivery-pipeline` runs one phase per turn by design.
+
 - **Branch drift (`dev` vs `main`)**
   - Symptom: unexpected conflicts or failing checks during promotion PR.
   - Fix: rebase/merge latest `dev` into feature branch before opening PR; for release, verify `dev` is stable before `dev` -> `main`.

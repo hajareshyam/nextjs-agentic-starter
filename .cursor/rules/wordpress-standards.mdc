@@ -1,0 +1,12 @@
+---
+description: WordPress plugin coding and release standards
+alwaysApply: true
+---
+
+- Keep WordPress plugin changes scoped and backward compatible when possible.
+- Validate all REST inputs and return non-sensitive error messages.
+- Never store secrets in plugin source code.
+- When changing plugin code under `wordpress/plugins/*`, always bump that plugin's version in its main plugin file header/constants in the same change.
+- When changing plugin code under `wordpress/plugins/*`, add or update an entry in that plugin's `CHANGELOG.md` in the same change.
+- Prefer explicit capability checks on mutating REST routes (for example `manage_woocommerce`/`manage_options`) unless a route is intentionally public.
+

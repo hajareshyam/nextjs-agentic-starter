@@ -1,9 +1,9 @@
 # Development Workflow
 
 ## Running the Application
-- Start local development server with `npm run app:dev`
-- Build production assets with `npm run app:build`
-- Start production server (after build) with `npm run app:start`
+- Start local development server: `npm run dev`
+- Build production assets: `npm run build`
+- Start production server (after build): `npm run start`
 
 ## Branching
 - Keep `main` as production-ready branch.
@@ -82,26 +82,89 @@ If critical production issue:
 - Run relevant tests before opening a pull request
 - Keep unit tests in `tests/unit` mirroring `src` structure
 - Name test files as `<ComponentOrPage>.test.tsx` for UI test suites
-- Run integration coverage with `npm run test:integration`
-- Run browser e2e checks with `npm run test:e2e`
+- Run integration tests: `npm run test:integration`
+- Run coverage: `npm run test:coverage`
+- Run changed `src/lib` coverage: `npm run test:coverage:changed`
+- Run browser e2e checks: `npm run test:e2e`
 
 ## Pull Requests
 - Use the PR template
 - Default target branch for feature work is `dev`
 - Ensure CI passes before merge
+- Include handoff-style validation notes (checks run, coverage, risks)
 
 ## Agentic Delivery Flow
-Assumption: BA/Product creates and refines stories before engineering execution.
 
-Default engineering flow:
-1. `feature-planning`
-2. `implementation-execution`
-3. `qa-validation`
+Start with **`delivery-pipeline`**. It triages the task and runs one phase per turn, stopping for approval at each handoff.
 
-Optional pre-step:
-- Use `story-writing` only when request details or acceptance criteria are incomplete.
+Entry prompt:
+```text
+Use the delivery-pipeline skill.
+Task: <describe request>
+Constraints: <optional>
+Start at the correct phase, run one phase only, then stop for my approval.
+```
 
-Specialized support skills:
-- `api-route` for API contract and endpoint work.
-- `test-coverage` for targeted confidence and regression prevention.
-- `perf-check` for production-mode performance investigation and optimization.
+### Pipeline diagram
+
+```mermaid
+flowchart TD
+    Start[Start task] --> DP[delivery-pipeline]
+
+    DP --> Size{Task size / risk?}
+    Size -->|Small bug| IE[implementation-execution]
+    Size -->|Feature / refactor| FP[feature-planning]
+    Size -->|Performance| PC[perf-check]
+
+    SW[story-writing<br/>optional] -.-> FP
+    FP --> Gate1{Approve plan?}
+    Gate1 --> IE
+    PC --> IE
+
+    IE --> Spec{Specialist?}
+    Spec -->|API| AR[api-route]
+    Spec -->|UI| NF[next-feature]
+    Spec -->|Tests| TC[test-coverage]
+    Spec -->|None| QA
+
+    AR --> QA[qa-validation]
+    NF --> QA
+    TC --> QA
+    IE --> QA
+
+    QA --> Gate2{Checks pass?}
+    Gate2 -->|No| IE
+    Gate2 -->|Yes| PR[pull-request]
+```
+
+### Phase skills
+| Phase | Skill |
+|---|---|
+| Triage + routing | `delivery-pipeline` |
+| Planning | `feature-planning` |
+| Implementation | `implementation-execution` |
+| QA | `qa-validation` |
+| PR (on request) | `pull-request` |
+
+### Specialist skills (during implementation)
+- `api-route` — API contract and endpoint work
+- `next-feature` — App Router UI features
+- `test-coverage` — targeted confidence and regression prevention
+- `perf-check` — production-mode performance investigation
+
+### Optional pre-step
+- `story-writing` — only when acceptance criteria are incomplete (standalone, not part of `delivery-pipeline`)
+
+### Handoff block
+Use at each phase transition. Full template: `.cursor/skills/README.md`
+
+```text
+Handoff: <planning|implementation|qa>
+Task: <feature/bug name>
+Completed: ...
+Files: ...
+Decisions: ...
+Checks: lint, typecheck, tests, coverage command, changed files coverage
+Risks / Follow-ups: ...
+Next owner: <implementation-execution|qa-validation|pull-request|reviewer>
+```

@@ -15,5 +15,5 @@ Validating completed implementation work before merge.
 3. Run typecheck and all relevant test suites; run lint when lint setup is functional in the environment.
 4. Check for regressions in adjacent user flows and API contracts.
 5. Report findings by severity with concrete reproduction details.
-6. Report coverage command and changed-file coverage, or mark `n/a` with reason.
+6. Report coverage using `npm run test:coverage` (overall) and `npm run test:coverage:changed` (git-changed `src/lib` files). Optional gate: `COVERAGE_MIN_LINES=60`.
 7. Confirm merge readiness or list blocking fixes.

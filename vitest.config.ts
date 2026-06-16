@@ -11,6 +11,12 @@ export default defineConfig({
       "tests/unit/**/*.test.tsx",
       "tests/integration/**/*.test.ts",
       "tests/integration/**/*.test.tsx"
-    ]
+    ],
+    coverage: {
+      provider: "v8",
+      include: ["src/**/*.{ts,tsx}"],
+      exclude: ["src/**/*.d.ts"],
+      reporter: ["text", "json-summary", "html"]
+    }
   }
 });
