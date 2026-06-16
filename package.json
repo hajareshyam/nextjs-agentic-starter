@@ -12,6 +12,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:integration": "vitest run tests/integration",
+    "test:coverage": "vitest run --coverage",
+    "test:coverage:changed": "node scripts/coverage-changed.mjs",
     "test:e2e": "playwright test"
   },
   "dependencies": {

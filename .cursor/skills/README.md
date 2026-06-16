@@ -345,35 +345,49 @@ Proceed to qa-validation.
 
 ## Workflow Diagram
 
+Canonical diagram (also in `docs/architecture.md` and `docs/development-workflow.md`):
+
 ```mermaid
 flowchart TD
-    A[Start Task] --> O[delivery-pipeline]
-    O --> B{Task size/risk?}
+    Start[Start task] --> DP[delivery-pipeline<br/>triage + one phase per turn]
 
-    B -->|Small bug, low risk| C[implementation-execution]
-    B -->|Feature, refactor, or unclear scope| F[feature-planning]
-    B -->|Performance target| P[perf-check]
+    DP --> Size{Task size / risk?}
+    Size -->|Small bug, low risk| IE[implementation-execution]
+    Size -->|Feature, refactor, unclear scope| FP[feature-planning]
+    Size -->|Performance target| PC[perf-check]
 
-    P --> C
-    F --> G[Planning Handoff]
-    G --> C
+    SW[story-writing<br/>optional, standalone] -.-> FP
 
-    C --> H{API integration involved?}
-    H -->|Yes| I[api-route<br/>contract + validation + docs verification]
-    H -->|No| J[Continue implementation]
+    FP --> Gate1{User approves plan?}
+    Gate1 -->|No| FP
+    Gate1 -->|Yes| IE
 
-    I --> J
-    J --> K[Implementation Handoff]
+    PC --> IE
 
-    K --> L[qa-validation]
-    L --> M{Checks pass?}
+    IE --> Spec{Specialist needed?}
+    Spec -->|API route| AR[api-route]
+    Spec -->|UI-heavy| NF[next-feature]
+    Spec -->|Low test confidence| TC[test-coverage]
+    Spec -->|None| QA
 
-    M -->|No| N[Blockers / fixes required]
-    N --> C
+    AR --> QA[qa-validation]
+    NF --> QA
+    TC --> QA
+    IE --> QA
 
-    M -->|Yes| O2[QA Handoff]
-    O2 --> R[Reviewer / PR merge decision]
+    QA --> Gate2{Checks pass?}
+    Gate2 -->|No| IE
+    Gate2 -->|Yes| PR[pull-request<br/>on user request]
+
+    PR --> Review[Reviewer merge decision]
 ```
+
+## Coverage Commands
+
+- Overall: `npm run test:coverage` — look for the **`All files`** row in the terminal table
+- Changed `src/lib` files: `npm run test:coverage:changed`
+- HTML detail: `coverage/index.html`
+- JSON summary: `coverage/coverage-summary.json`
 
 ## Handoff Protocol
 

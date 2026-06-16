@@ -9,16 +9,26 @@ Define how coding agents operate in this repository with predictable, safe outpu
 - Avoid destructive git commands unless explicitly requested.
 - Do not commit secrets or environment credentials.
 
+## Delivery Pipeline
+- Start non-trivial work with `delivery-pipeline` (see `.cursor/skills/delivery-pipeline/SKILL.md`).
+- Run one phase per turn unless the user explicitly approves advancing.
+- Do not mark merge-ready before `qa-validation` passes.
+- Use the standard handoff block at each phase (template in `.cursor/skills/README.md`).
+
 ## Delivery Expectations
 - Ensure quality gates pass for touched areas using canonical commands:
   - `npm run typecheck`
   - `npm run test`
+  - `npm run test:coverage` or `npm run test:coverage:changed` when `src/lib` changes
   - `npm run test:e2e` when user-critical flows are changed
   - `npm run lint` when lint setup is functional in the environment
 - Define touched areas by change type:
   - UI/component changes: unit tests and relevant integration/e2e checks
   - API route changes: integration tests for success/failure/validation/auth paths
   - Shared logic in `src/lib`: unit tests for edge cases and regression risks
-- Report coverage for changed files when available, or mark `n/a` with reason.
+- Report coverage in handoffs:
+  - **coverage command:** `npm run test:coverage` or `npm run test:coverage:changed`
+  - **changed files coverage:** output of `npm run test:coverage:changed` (or `coverage/coverage-summary.json`)
+  - Mark `n/a` with reason when coverage does not apply
 - Use production-mode measurements (`npm run build` + `npm run start`) for performance decisions.
 - Include concise implementation notes in pull requests.
