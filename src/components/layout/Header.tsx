@@ -19,6 +19,11 @@ export function Header() {
                 Getting Started
               </a>
             </li>
+            <li>
+              <Link href="/blog" className="hover:text-white">
+                Blog
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

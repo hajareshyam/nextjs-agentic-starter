@@ -15,5 +15,6 @@ describe("Header", () => {
       "href",
       "#getting-started"
     );
+    expect(screen.getByRole("link", { name: "Blog" })).toHaveAttribute("href", "/blog");
   });
 });
